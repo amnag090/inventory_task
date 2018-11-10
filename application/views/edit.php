@@ -73,46 +73,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	}
 	</style>
 </head>
+
 <body>
 
 <div class="container-fluid">
-	<h1>Welcome to Inventory Manager</h1>
-
-	<div class="row">
-		<p><h2>Add more Items</h2></p>
-		<form method = "post" action="<?php echo site_url('welcome/store');?>" id ="form">
-		
-		Item Name: <input type="text"  class="form-group" name="name" id="name">
-		Item Quantity: <input type="number" class="form-group" name="quantity" id="quantity">
+ <p><h1>Edit Item <?= $item->name?></h1></p>
+</div>
+<form method = "post" action="<?php echo site_url('welcome/saveedit');?>" id ="form">
+		<input type="hidden" name="id" value="<?= $item->id;?>">
+		Item Name: <input type="text"  class="form-group" name="name" id="name" value="<?=$item->name?>"> <br>
+		Item Quantity: <input type="number" class="form-group" name="quantity" id="quantity" value="<?=$item->quantity?>"><br>
 		<input type="submit" class="btn btn-primary" value="submit">
 		</form>
-	</div>
-<br><br><br>
-	<div class="row">
-	<table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Item Name</th>
-        <th>Quantity</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-	<?php foreach ($items as $item):?>
-      <tr>
-        <td><?=$item->name?></td>
-        <td><?=$item->quantity?></td>
-        <td><a href="<?php print site_url('welcome/edit/' . $item->id); ?>" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-		<a href="<?php print site_url('welcome/delete/' . $item->id); ?>" class="btn  btn-danger"><i class="fa fa-trash-o"></i></a> 
-</td>
-      </tr>
-	<?php endforeach;?>
-    </tbody>
-  </table>
-	</div>
-
-
-</div>
-
 </body>
-</html>
